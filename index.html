@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DOMPETIN adalah sistem manajemen keuangan pribadi modern untuk mencatat pemasukan dan pengeluaran.">
+    <title>DOMPETIN — Sistem Dompet Digital Pribadi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Langsung ke konten utama</a>
+
+    <header class="site-header" id="top">
+        <div class="container header-bar">
+            <a href="#home" class="brand" aria-label="DOMPETIN">
+                <i class="fas fa-wallet"></i>
+                <div>
+                    <span class="brand-label">DOMPETIN</span>
+                    <p class="brand-sub" data-i18n="tagline">Kelola keuangan pribadi dengan mudah</p>
+                </div>
+            </a>
+
+            <nav class="primary-nav" id="primaryNav" aria-label="Navigasi utama" aria-hidden="false">
+                <a href="#home" class="nav-link" data-i18n="nav.home">Beranda</a>
+                <a href="#features" class="nav-link" data-i18n="nav.features">Fitur</a>
+                <a href="#how-to-use" class="nav-link" data-i18n="nav.howToUse">Cara Pakai</a>
+                <a href="#system" class="nav-link" data-i18n="nav.system">Sistem</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">Tentang</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">Kontak</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka navigasi" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="header-actions">
+                <button id="themeToggle" class="icon-btn" aria-label="Ganti tema" title="Ganti tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="languageToggle" class="icon-btn chip" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe"></i><span>ID</span><i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="languageDropdown" class="language-dropdown" role="menu">
+                        <button class="language-option active" data-lang="id">
+                            <i class="fas fa-check"></i>Bahasa Indonesia
+                        </button>
+                        <button class="language-option" data-lang="en">
+                            <i class="fas fa-check"></i>English
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <div id="alertBox" class="alert" role="status" aria-live="polite" hidden></div>
+
+    <main id="main-content">
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="eyebrow" data-i18n="hero.eyebrow">Solusi pengelolaan uang untuk generasi digital</span>
+                        <h1 data-i18n-html="hero.title">Dompet digital pribadi yang <span class="gradient-text">transparan</span> dan <span class="gradient-text">terukur</span>.</h1>
+                        <p class="lead" data-i18n="hero.lead">DOMPETIN membantu kamu memahami arus kas, menjaga batas pengeluaran, dan menyampaikan laporan yang siap dibagikan kapan saja.</p>
+                        
+                        <div class="hero-actions">
+                            <a href="#system" class="btn primary" data-i18n="hero.ctaPrimary">
+                                <span>Mulai catat sekarang</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#how-to-use" class="btn secondary" data-i18n="hero.ctaSecondary">
+                                <span>Pelajari cara kerja</span>
+                                <i class="fas fa-play-circle"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="hero-features">
+                            <div class="feature-item">
+                                <div class="feature-number">01</div>
+                                <div class="feature-content">
+                                    <h4 data-i18n="hero.stat1">Monitoring real-time</h4>
+                                    <p>Pantau pemasukan dan pengeluaran secara real-time</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-number">02</div>
+                                <div class="feature-content">
+                                    <h4 data-i18n="hero.stat2">Kesehatan finansial</h4>
+                                    <p>Analisis otomatis status keuangan Anda</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Status Keuangan</h3>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="status-indicator">
+                                <div class="status-badge" id="statusBadge">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Hemat</span>
+                                </div>
+                                <p id="statusMsg" class="status-message">Pengeluaran Anda sangat baik! Pertahankan kebiasaan ini.</p>
+                            </div>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-label">Total Saldo</div>
+                                    <div id="remainingHero" class="stat-value">Rp 5.000.000</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Penggunaan</div>
+                                    <div class="stat-value">
+                                        <span id="usagePercentHero">0%</span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-hint">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Data diambil dari transaksi yang kamu simpan</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <div class="offline-status">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Data tersimpan lokal & aman digunakan offline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trust-badges">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Aman & Terenkripsi</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-sync"></i>
+                        <span>Sinkronisasi Otomatis</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Responsif di Semua Perangkat</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow" data-i18n="features.eyebrow">Ringkasan sistem</p>
+                    <h2 data-i18n="features.title">Semua informasi penting dalam satu halaman</h2>
+                    <p data-i18n="features.desc">DOMPETIN menyatukan penjelasan, cara pakai, input transaksi, dan dokumentasi supaya mudah dipahami siapa pun.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <i class="fas fa-layer-group"></i>
+                        <h3 data-i18n="features.cards.info.title">Informasi Sistem</h3>
+                        <p data-i18n="features.cards.info.desc">Dokumentasi singkat menjelaskan konsep Dompetin, komponen utama, dan manfaat bagi pengguna.</p>
+                    </article>
+                    <article class="feature-card">
+                        <i class="fas fa-play-circle"></i>
+                        <h3 data-i18n="features.cards.how.title">Cara Menggunakan</h3>
+                        <p data-i18n="features.cards.how.desc">Panduan langkah demi langkah dari set budget, input transaksi, sampai membaca status keuangan.</p>
+                    </article>
+                    <article class="feature-card">
+                        <i class="fas fa-pen-to-square"></i>
+                        <h3 data-i18n="features.cards.input.title">Input Transaksi</h3>
+                        <p data-i18n="features.cards.input.desc">Formulir responsif untuk mencatat pemasukan dan pengeluaran dengan kategori yang familiar.</p>
+                    </article>
+                    <article class="feature-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3 data-i18n="features.cards.team.title">Tentang Pembuat</h3>
+                        <p data-i18n="features.cards.team.desc">Profil singkat tim PPLG 2 SMKN 12 Surabaya lengkap dengan peran dan kontak.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to-use" class="section alt">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow" data-i18n="how.eyebrow">Cara menggunakan</p>
+                    <h2 data-i18n="how.title">3 langkah mudah mengelola uang dengan DOMPETIN</h2>
+                </div>
+                <div class="steps">
+                    <article class="step">
+                        <span>1</span>
+                        <h3 data-i18n="how.step1.title">Masukkan budget bulanan</h3>
+                        <p data-i18n="how.step1.desc">Tentukan batas aman pengeluaran berdasarkan pemasukan tetapmu.</p>
+                    </article>
+                    <article class="step">
+                        <span>2</span>
+                        <h3 data-i18n="how.step2.title">Catat pemasukan/pengeluaran</h3>
+                        <p data-i18n="how.step2.desc">Isi detail transaksi beserta kategori agar laporan lebih terstruktur.</p>
+                    </article>
+                    <article class="step">
+                        <span>3</span>
+                        <h3 data-i18n="how.step3.title">Analisis status finansial</h3>
+                        <p data-i18n="how.step3.desc">Lihat ringkasan, sisa saldo, dan rekomendasi tindakan secara instan.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="system" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow" data-i18n="system.eyebrow">Sistem DOMPETIN</p>
+                    <h2 data-i18n="system.title">Input data &amp; monitor hasil secara langsung</h2>
+                    <p data-i18n="system.desc">Semua data tersimpan di browser kamu menggunakan localStorage sehingga aman dan privat.</p>
+                </div>
+
+                <div class="system-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <p class="eyebrow" data-i18n="system.budget.eyebrow">Budget bulanan</p>
+                                <h3 data-i18n="system.budget.title">Atur batas pengeluaran</h3>
+                            </div>
+                            <p id="budgetDisplay">Belum ada budget yang diset</p>
+                        </div>
+                        <div class="card-body">
+                            <label for="budgetInput" data-i18n="system.budget.inputLabel">Masukkan jumlah pemasukan (Rp)</label>
+                            <div class="input-row">
+                                <input type="number" id="budgetInput" placeholder="Contoh: 5000000" min="0">
+                                <button id="saveBudgetBtn" class="btn primary" data-i18n="system.budget.save">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card summary-card">
+                        <div class="card-header">
+                            <p class="eyebrow" data-i18n="system.summary.eyebrow">Ringkasan realtime</p>
+                            <h3 data-i18n="system.summary.title">Performa keuangan</h3>
+                        </div>
+                        <div class="summary-grid">
+                            <div>
+                                <p data-i18n="system.summary.income">Total pemasukan</p>
+                                <strong id="totalIncome">Rp0</strong>
+                            </div>
+                            <div>
+                                <p data-i18n="system.summary.expense">Total pengeluaran</p>
+                                <strong id="totalExpense">Rp0</strong>
+                            </div>
+                            <div>
+                                <p data-i18n="system.summary.remaining">Sisa saldo</p>
+                                <strong id="remaining">Rp0</strong>
+                            </div>
+                            <div>
+                                <p data-i18n="system.summary.usage">Persentase penggunaan</p>
+                                <strong id="usagePercent">0%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <p class="eyebrow">Form transaksi</p>
+                        <h3>Catat pemasukan &amp; pengeluaran</h3>
+                    </div>
+                    <form id="transactionForm" class="card-body form-grid">
+                        <label>
+                            Tanggal
+                            <input type="date" id="trxDate" required>
+                        </label>
+                        <label>
+                            Kategori
+                            <select id="trxCategory" required>
+                                <option value="">Pilih kategori</option>
+                                <option value="Kebutuhan Pokok">Kebutuhan Pokok</option>
+                                <option value="Transportasi">Transportasi</option>
+                                <option value="Tagihan">Tagihan</option>
+                                <option value="Hiburan">Hiburan</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </label>
+                        <label>
+                            Tipe
+                            <select id="trxType" required>
+                                <option value="">Pilih tipe</option>
+                                <option value="Pemasukan">Pemasukan</option>
+                                <option value="Pengeluaran">Pengeluaran</option>
+                            </select>
+                        </label>
+                        <label>
+                            Nominal
+                            <input type="number" id="trxAmount" placeholder="0" min="0" required>
+                        </label>
+                        <label class="wide">
+                            Catatan
+                            <input type="text" id="trxNote" placeholder="Contoh: Gaji bulan November">
+                        </label>
+                        <button type="submit" class="btn primary full">Simpan transaksi</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <p class="eyebrow">Daftar transaksi</p>
+                        <h3>Riwayat terbaru</h3>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Kategori</th>
+                                    <th>Tipe</th>
+                                    <th>Nominal</th>
+                                    <th>Catatan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trxTableBody">
+                                <tr>
+                                    <td colspan="7" class="empty">Belum ada transaksi</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section alt">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow" data-i18n="about.eyebrow">Tentang pembuat</p>
+                    <h2 data-i18n="about.title">SMKN 12 Surabaya — XI PPLG 2</h2>
+                    <p data-i18n="about.desc">DOMPETIN dikembangkan oleh Kelompok 1 untuk membantu pelajar memahami pentingnya pencatatan finansial sejak dini.</p>
+                </div>
+                <div class="team-grid">
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <span>RP</span>
+                        </div>
+                        <div class="team-info">
+                            <p class="role">Full-stack Developer</p>
+                            <h3>Rifky Faturrachman Puloo</h3>
+                            <p>Mengembangkan fitur inti aplikasi dan memastikan semua komponen berfungsi dengan baik.</p>
+                            <div class="team-social">
+                                <a href="#" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <span>FA</span>
+                        </div>
+                        <div class="team-info">
+                            <p class="role">UI/UX Designer</p>
+                            <h3>Frisheila Martha Apsari</h3>
+                            <p>Mendesain antarmuka yang intuitif dan pengalaman pengguna yang menyenangkan.</p>
+                            <div class="team-social">
+                                <a href="#" aria-label="Dribbble" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                <a href="#" aria-label="Behance" title="Behance"><i class="fab fa-behance"></i></a>
+                                <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <span>FP</span>
+                        </div>
+                        <div class="team-info">
+                            <p class="role">Frontend Developer</p>
+                            <h3>Muhammad Farel Anugrah Pratama</h3>
+                            <p>Mengimplementasikan antarmuka pengguna dengan teknologi web modern.</p>
+                            <div class="team-social">
+                                <a href="#" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="team-card">
+                        <div class="team-avatar">
+                            <span>DK</span>
+                        </div>
+                        <div class="team-info">
+                            <p class="role">Backend Developer</p>
+                            <h3>Muhammad Dzikrul Kahfi</h3>
+                            <p>Mengelola logika bisnis dan penyimpanan data untuk keandalan aplikasi.</p>
+                            <div class="team-social">
+                                <a href="#" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="GitLab" title="GitLab"><i class="fab fa-gitlab"></i></a>
+                                <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="team-cta">
+                    <h3>Ingin berkolaborasi dengan kami?</h3>
+                    <p>Kami selalu terbuka untuk ide-ide baru dan kesempatan kolaborasi.</p>
+                    <a href="#contact" class="btn primary">Hubungi Kami</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container contact-grid">
+                <div>
+                    <p class="eyebrow" data-i18n="contact.eyebrow">Kontak &amp; laporan</p>
+                    <h2 data-i18n="contact.title">Butuh bantuan atau ingin lapor bug?</h2>
+                    <p data-i18n="contact.desc">Hubungi kami kapan saja melalui kanal berikut atau isi formulir agar tim segera menindaklanjuti.</p>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> dompetin.support@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +62 812-0000-1234</li>
+                        <li><i class="fas fa-location-dot"></i> SMKN 12 Surabaya, Jawa Timur</li>
+                    </ul>
+                </div>
+                <form class="card contact-form">
+                    <label>Nama lengkap
+                        <input type="text" placeholder="Tulis nama kamu" required>
+                    </label>
+                    <label>Email aktif
+                        <input type="email" placeholder="nama@email.com" required>
+                    </label>
+                    <label>Pesan atau laporan bug
+                        <textarea rows="4" placeholder="Jelaskan kendala yang kamu temui" required></textarea>
+                    </label>
+                    <button type="submit" class="btn primary full">Kirim pesan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-wallet"></i>
+                        <span>DOMPETIN</span>
+                    </a>
+                    <p class="footer-about">Dompet digital edukatif untuk mengelola keuangan pribadi pelajar Indonesia. Mulai kelola keuanganmu dengan lebih baik hari ini.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Menu Cepat</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Fitur</a></li>
+                        <li><a href="#how-to-use"><i class="fas fa-chevron-right"></i> Cara Pakai</a></li>
+                        <li><a href="#system"><i class="fas fa-chevron-right"></i> Sistem</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Sumber Daya</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Dokumentasi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Panduan</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Dukungan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Kontak Kami</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:dompetin.support@gmail.com">dompetin.support@gmail.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-instagram"></i>
+                            <div>
+                                <strong>Instagram</strong>
+                                <a href="https://instagram.com/dompetin.app" target="_blank">@dompetin.app</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <strong>GitHub</strong>
+                                <a href="https://github.com/dompetin-lab" target="_blank">dompetin-lab</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© <span id="year"></span> DOMPETIN. Seluruh hak cipta dilindungi.</p>
+                <div class="footer-legal">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                    <a href="#">Kebijakan Cookie</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/app.js" defer></script>
+</body>
+</html>
