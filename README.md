@@ -24,5 +24,5 @@ DOMPETIN adalah aplikasi web edukatif buatan siswa SMKN 12 Surabaya (XI PPLG 2) 
 ## Status & rencana berikutnya
 - ✅ MVP front-end siap demo / hosting statis (GitHub Pages / Vercel).
 - 🔜 Pengembangan tambahan: ekspor ke CSV/PDF, kategori kustom, autentikasi multi pengguna, serta integrasi backend bila dibutuhkan.
-- +62 812-0000-1234
 - SMKN 12 Surabaya, Jawa Timur
+
